@@ -19,9 +19,15 @@ const start = async () => {
     },
   })
 
-  // Add your own express routes here
 
-  app.listen(3000)
+  // Don't start server for Vercel
+  if (process.env.NODE_ENV !== 'production') {
+    app.listen(3000, () => {
+      console.log('Server started on http://localhost:3000')
+    })
+  }
 }
 
 start()
+
+export default app
