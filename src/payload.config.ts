@@ -1,5 +1,4 @@
 import path from 'path'
-
 import { payloadCloud } from '@payloadcms/plugin-cloud'
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { webpackBundler } from '@payloadcms/bundler-webpack'
@@ -8,10 +7,9 @@ import { buildConfig } from 'payload/config'
 
 import Landing from './globals/Landing'
 import MainNavigation from './globals/MainNavigation'
-
 import Users from './collections/Users'
 import Pages from './collections/Pages'
-
+import Media from './collections/Media'
 
 export default buildConfig({
   admin: {
@@ -22,6 +20,7 @@ export default buildConfig({
   collections: [
     Users,
     Pages,
+    Media,
   ],
   globals: [
     Landing,

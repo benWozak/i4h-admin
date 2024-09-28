@@ -1,4 +1,5 @@
 import { CollectionConfig } from 'payload/types';
+import { heroField } from '../fields/heroField';
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -20,6 +21,7 @@ export const Pages: CollectionConfig = {
       required: true,
       unique: true,
     },
+    heroField,
   ],
 };
 
