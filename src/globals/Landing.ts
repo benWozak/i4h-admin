@@ -1,5 +1,6 @@
 import { GlobalConfig } from 'payload/types';
 import { heroField } from '../fields/heroField';
+import { seoField } from '../fields/seo';
 
 export const Landing: GlobalConfig = {
   slug: 'landing-page',
@@ -13,6 +14,7 @@ export const Landing: GlobalConfig = {
       required: true,
     },
     heroField,
+    seoField
   ],
   admin: {
     group: 'Content',

@@ -1,5 +1,5 @@
 import React from "react";
-import { useField } from "payload/components/forms";
+import { useField, TextInput } from "payload/components/forms";
 
 const ColorPickerInput: React.FC<{
   path: string;
@@ -7,18 +7,25 @@ const ColorPickerInput: React.FC<{
   onChange: (value: string) => void;
 }> = ({ path, value, onChange }) => {
   return (
-    <div>
+    <div style={{ display: "flex", gap: "1rem" }}>
       <input
+        style={{
+          background: "none",
+          border: "none",
+          width: 40,
+          height: 40,
+          borderRadius: "40rem",
+        }}
         type="color"
         value={value || "#000000"}
         onChange={(e) => onChange(e.target.value)}
       />
-      <input
-        type="text"
+      <TextInput
+        name="color"
+        path={path}
         value={value || ""}
         onChange={(e) => onChange(e.target.value)}
         placeholder="#000000"
-        style={{ marginLeft: "10px" }}
       />
     </div>
   );

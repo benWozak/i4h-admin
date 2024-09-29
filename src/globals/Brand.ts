@@ -11,7 +11,7 @@ export const Brand: GlobalConfig = {
       name: 'companyLogo',
       type: 'upload',
       relationTo: 'media',
-      required: true,
+      required: false,
     },
     {
       name: 'brandColors',
@@ -20,7 +20,7 @@ export const Brand: GlobalConfig = {
         {
           name: 'primary',
           type: 'text',
-          required: true,
+          required: false,
           admin: {
             components: {
               Field: ColorPicker,
@@ -30,7 +30,7 @@ export const Brand: GlobalConfig = {
         {
           name: 'secondary',
           type: 'text',
-          required: true,
+          required: false,
           admin: {
             components: {
               Field: ColorPicker,
@@ -46,22 +46,22 @@ export const Brand: GlobalConfig = {
         {
           name: 'facebook',
           type: 'text',
-          required: true,
+          required: false,
         },
         {
           name: 'instagram',
           type: 'text',
-          required: true,
+          required: false,
         },
         {
           name: 'twitter',
           type: 'text',
-          required: true,
+          required: false,
         },
         {
           name: 'linkedin',
           type: 'text',
-          required: true,
+          required: false,
         },
       ],
     },
