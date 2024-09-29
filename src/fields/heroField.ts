@@ -44,10 +44,30 @@ export const heroField: Field = {
           defaultValue: 'none',
         },
         {
+          name: 'viewportHeight',
+          type: 'select',
+          options: [
+            { label: 'Full Viewport', value: 'full' },
+            { label: 'Partial Viewport', value: 'partial' },
+          ],
+          defaultValue: 'partial',
+          admin: {
+            condition: (data, siblingData) => siblingData?.type !== 'none',
+          },
+        },
+        {
           name: 'image',
           type: 'upload',
           relationTo: 'media',
           required: true,
+          admin: {
+            condition: (data, siblingData) => siblingData?.type === 'image',
+          },
+        },
+        {
+          name: 'useParallax',
+          type: 'checkbox',
+          label: 'Enable parallax effect',
           admin: {
             condition: (data, siblingData) => siblingData?.type === 'image',
           },
