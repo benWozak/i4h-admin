@@ -7,6 +7,7 @@ import { buildConfig } from 'payload/config'
 
 import Landing from './globals/Landing'
 import MainNavigation from './globals/MainNavigation'
+import Brand from './globals/Brand'
 import Users from './collections/Users'
 import Pages from './collections/Pages'
 import Media from './collections/Media'
@@ -24,7 +25,8 @@ export default buildConfig({
   ],
   globals: [
     Landing,
-    MainNavigation
+    MainNavigation,
+    Brand
   ],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
