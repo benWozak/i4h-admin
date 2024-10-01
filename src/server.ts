@@ -22,8 +22,8 @@ const start = async () => {
 
   // Don't start server for Vercel
   if (process.env.NODE_ENV !== 'production') {
-    app.listen(3000, () => {
-      console.log('Server started on http://localhost:3000')
+    app.listen(5555, () => {
+      console.log('Server started on http://localhost:5555')
     })
   }
 }

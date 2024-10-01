@@ -66,11 +66,53 @@ export const MainNavigation: GlobalConfig = {
               relationTo: 'pages',
               required: true,
             },
+            {
+              name: 'isPrimary',
+              type: 'checkbox',
+              label: 'Set as Primary Link',
+              defaultValue: false,
+            },
+            {
+              name: 'description',
+              type: 'textarea',
+              label: 'Short Description',
+              validate: (value, { siblingData }) => {
+                if (!value) return true; // Allow empty description
+                const wordCount = value.trim().split(/\s+/).length;
+                const maxWords = siblingData.isPrimary ? 150 : 60;
+                if (wordCount > maxWords) {
+                  return `Description must not exceed ${maxWords} words`;
+                }
+                return true;
+              },
+            },
           ],
         },
       ],
     },
   ],
+  hooks: {
+    beforeValidate: [
+      ({ data }) => {
+        if (data.items) {
+          data.items.forEach(item => {
+            if (item.type === 'dropdown' && item.dropdownItems) {
+              let primaryCount = 0;
+              item.dropdownItems.forEach(dropdownItem => {
+                if (dropdownItem.isPrimary) {
+                  primaryCount++;
+                }
+              });
+              if (primaryCount > 1) {
+                throw new Error('Only one primary link is allowed per dropdown.');
+              }
+            }
+          });
+        }
+        return data;
+      },
+    ],
+  },
 };
 
 export default MainNavigation;
