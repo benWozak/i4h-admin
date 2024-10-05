@@ -1,6 +1,5 @@
 import { CollectionConfig } from 'payload/types';
-import { heroField } from '../fields/heroField';
-import { seoField } from '../fields/seo';
+import { heroField, seoField, PreviewButton } from '../fields';
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -11,6 +10,16 @@ export const Pages: CollectionConfig = {
     read: () => true,
   },
   fields: [
+    {
+      name: 'livePreview',
+      type: 'ui',
+      admin: {
+        position: 'sidebar',
+        components: {
+          Field: PreviewButton
+        }
+      }
+    },
     {
       name: 'name',
       type: 'text',

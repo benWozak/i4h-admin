@@ -16,7 +16,20 @@ export default buildConfig({
   admin: {
     user: Users.slug,
     bundler: webpackBundler(),
+    webpack: (config) => {
+      return {
+        ...config,
+        resolve: {
+          ...config.resolve,
+          alias: {
+            ...config.resolve?.alias,
+            '@': path.resolve(__dirname, 'src'),
+          },
+        },
+      }
+    },
   },
+  serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL || 'http://localhost:5555',
   editor: slateEditor({}),
   collections: [
     Users,
