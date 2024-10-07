@@ -6,6 +6,9 @@ export const Pages: CollectionConfig = {
   admin: {
     useAsTitle: 'name',
   },
+  versions: {
+    drafts: true,
+  },
   access: {
     read: () => true,
   },
@@ -21,15 +24,38 @@ export const Pages: CollectionConfig = {
       }
     },
     {
-      name: 'name',
-      type: 'text',
-      required: true,
-    },
-    {
-      name: 'slug',
-      type: 'text',
-      required: true,
-      unique: true,
+      type: 'row',
+      fields: [
+        {
+          name: 'name',
+          type: 'text',
+          required: true,
+          admin: {
+            width: '50%',
+          },
+        },
+        {
+          name: 'slug',
+          type: 'text',
+          required: true,
+          unique: true,
+          admin: {
+            width: '50%',
+            description: 'This field will auto-generate based on the Name field.',
+            readOnly: true,
+          },
+          hooks: {
+            beforeValidate: [
+              ({ data }) => {
+                if (data.name) {
+                  return data.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+                }
+                return data.slug;
+              },
+            ],
+          },
+        },
+      ],
     },
     heroField,
     seoField
